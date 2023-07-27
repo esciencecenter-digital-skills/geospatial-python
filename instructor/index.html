@@ -553,11 +553,17 @@ with your web browser.</p></li>
 <li><p>Download the Anaconda installer with Python 3 for Linux.</p></li>
 <li><p>Open a terminal window and navigate to the directory where the
 executable is downloaded (e.g., <code>cd ~/Downloads</code>).</p></li>
-<li><p>Type:</p></li>
-</ol><pre class="shell"><code>bash Anaconda3-</code></pre>
+<li>
+<p>Type:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Anaconda3-</span></code></pre>
+</div>
 <p>and press “Tab” to autocomplete the full file name. The name of file
 you just downloaded should appear.</p>
-<ol start="5" style="list-style-type: decimal"><li><p>Press “Enter” (or “Return” depending on your keyboard).</p></li>
+</li>
+<li><p>Press “Enter” (or “Return” depending on your keyboard).</p></li>
 <li><p>Follow the text-only prompts. When the license agreement appears
 (a colon will be present at the bottom of the screen) press “Spacebar”
 until you see the bottom of the text. Type <code>yes</code> and press
@@ -576,21 +582,46 @@ distribution your user’s default Python).</p></li>
 <p>If Anaconda was properly installed, you should have access to the
 <code>conda</code> command in your terminal (use the <strong>Anaconda
 prompt</strong> on <strong>Windows</strong>).</p>
-<ol style="list-style-type: decimal"><li>Test that <code>conda</code> is correctly installed by typing:</li>
-</ol><pre class="shell"><code><span><span class="va">conda</span> <span class="op">-</span><span class="op">-</span><span class="va">version</span></span></code></pre>
+<ol style="list-style-type: decimal"><li>
+<p>Test that <code>conda</code> is correctly installed by
+typing:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
+</div>
 <p>which should print the version of conda that is currently installed,
-e.g. : <code>output   conda 22.9.0</code></p>
-<ol start="2" style="list-style-type: decimal"><li>Run the following command:</li>
-</ol><pre class="shell"><code>conda install -c conda-forge mamba</code></pre>
+e.g. :</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>conda 22.9.0</code></pre>
+</div>
+</li>
+<li>
+<p>Run the following command:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge mamba</span></code></pre>
+</div>
 <p>IMPORTANT: If your terminal responds to the above command with
 <code>conda: command not found</code> see the &gt;
 &lt;<troubleshooting>&gt; section.</troubleshooting></p>
-<ol start="3" style="list-style-type: decimal"><li>Create the Python environment for the workshop by running:</li>
-</ol><pre class="shell"><code>mamba env create -n geospatial -f https://carpentries-incubator.github.io/geospatial-python/files/environment.yaml</code></pre>
+</li>
+<li>
+<p>Create the Python environment for the workshop by running:</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-n</span> geospatial <span class="at">-f</span> https://carpentries-incubator.github.io/geospatial-python/files/environment.yaml</span></code></pre>
+</div>
 <p>Note that this step can take several minutes.</p>
-<ol start="4" style="list-style-type: decimal"><li>When installation has finished you should see the following message
-in the terminal:</li>
-</ol><div class="codewrapper">
+</li>
+<li>
+<p>When installation has finished you should see the following
+message in the terminal:</p>
+<div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="co"># To activate this environment, use</span></span>
@@ -599,20 +630,30 @@ in the terminal:</li>
 <span><span class="co"># To deactivate an active environment, use</span></span>
 <span><span class="co">#    $ conda deactivate</span></span></code></pre>
 </div>
-<ol start="5" style="list-style-type: decimal"><li>Activate the <code>geospatial</code> environment:</li>
-</ol><pre class="shell"><code>conda activate geospatial</code></pre>
-<p>If successful, the text <code>(base)</code> in your terminal prompt
+</li>
+<li>
+<p>Activate the <code>geospatial</code> environment:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate geospatial</span></code></pre>
+</div>
+</li>
+</ol><p>If successful, the text <code>(base)</code> in your terminal prompt
 will now read <code>(geospatial)</code> indicating that you are now in
 the Anaconda virtual environment named <code>geospatial</code>. The
 command <code>which python</code> should confirm that we’re using the
 Python installation in the <code>geospatial</code> virtual environment.
 For example:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python</span></code></pre>
+</div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>% which python
-&gt; /Users/your-username/anaconda3/envs/geospatial/bin/python
-                                      ^^^^^^^^^^</code></pre>
+<pre class="output" tabindex="0"><code>/Users/your-username/anaconda3/envs/geospatial/bin/python</code></pre>
 </div>
 <p>IMPORTANT: If you close the terminal, you will need to reactivate
 this environment with <code>conda activate geospatial</code> to use the
@@ -625,33 +666,46 @@ is also installed in the <code>geospatial</code> environment.</p>
 activating the geospatial conda environment, enter the following command
 in your terminal (use the <strong>Anaconda prompt</strong> on
 <strong>Windows</strong>):</p>
-<pre class="shell"><code>jupyter lab</code></pre>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+</div>
 <p>Once you have launched JupyterLab, create a new Python 3 notebook,
 type the following code snippet in a cell and press the “Play”
 button:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray</span></code></pre>
 </div>
-<p>If all of the steps above completed successfully you are ready to
-follow along with the lesson!</p>
+<p>If all the steps above completed successfully you are ready to follow
+along with the lesson!</p>
 </div>
 <div class="section level3">
 <h3 id="troubleshooting-conda-command-not-found">Troubleshooting <code>conda: command not found</code>
 <a class="anchor" aria-label="anchor" href="#troubleshooting-conda-command-not-found"></a></h3>
-<ul><li><strong>Mac OS and Linux users:</strong></li>
-</ul><ol style="list-style-type: decimal"><li>
+<ul><li>
+<p><strong>Mac OS and Linux users:</strong></p>
+<ol style="list-style-type: decimal"><li>
 <p>First, find out where Anaconda is installed.</p>
 <p>The typical install location is in your <code>$HOME</code> directory
 (i.e., <code>/Users/your-username/</code>) so use <code>ls ~</code> to
 check whether an <code>anaconda3</code> directory is present in your
 home directory:</p>
-<pre class="shell"><code>% ls ~
-&gt; Applications      Downloads       Pictures
-  anaconda3         Library         Public
-  Desktop           Movies
-  Documents         Music</code></pre>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Applications      Downloads       Pictures
+anaconda3         Library         Public
+Desktop           Movies
+Documents         Music</code></pre>
+</div>
 <p>If, like above, you see a directory called <code>anaconda3</code> in
 the output we’re in good shape. If not, <strong>contact the instructor
 for help</strong>.</p>
@@ -659,10 +713,10 @@ for help</strong>.</p>
 <li>
 <p>Activate the <code>conda</code> command-line program by entering
 the following command:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/anaconda3/bin/activate</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/anaconda3/bin/activate</span></code></pre>
 </div>
 <p>If all goes well, nothing will print to the terminal and your prompt
 will now have <code>(base)</code> floating around somewhere on the left.
@@ -670,7 +724,8 @@ This is an indication that you are in the base Anaconda environment.</p>
 <p>Continue from the beginning of step 3 to complete the creation of the
 <code>geospatial</code> virtual environment.</p>
 </li>
-</ol><!--
+</ol></li>
+</ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  --></div>
@@ -723,7 +778,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/index.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/index.html",
-  "dateCreated": "2023-07-26",
+  "dateCreated": "2023-07-27",
   "dateModified": "2023-07-27",
   "datePublished": "2023-07-27"
 }
