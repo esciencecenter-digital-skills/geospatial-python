@@ -483,7 +483,7 @@ the small group discussions.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Raster data has some important advantages:</p>
 <ul>
@@ -538,7 +538,7 @@ If not, which object(s) have a different extent?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The lines and polygon objects have the same extent. The extent for
 the points object is smaller in the vertical direction than the other
@@ -1141,7 +1141,7 @@ collected from?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul>
 <li>Projection is UTM, zone 18, datum is WGS84, ellipsoid is WGS84.</li>
@@ -1588,7 +1588,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-05-access-data"><p>Content from <a href="05-access-data.html">Access satellite imagery using Python</a></p>
 <hr>
-<p> Last updated on 2023-07-27 | 
+<p> Last updated on 2023-09-12 | 
         
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/05-access-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 45 minutes </p>
@@ -1729,7 +1729,7 @@ assets represent?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <figure><img src="../fig/E05/STAC-browser-exercise.jpg" alt="earth-search stac catalog views" class="figure mx-auto d-block"><figcaption>Views of the Earth Search STAC endpoint</figcaption></figure><ol style="list-style-type: decimal">
 <li>7 subcatalogs are available, including a catalog for Landsat
@@ -1925,7 +1925,7 @@ format.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2120,7 +2120,7 @@ Landsat 8 collection (<code>HLSL30.v2.0</code>) from February to March
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2189,10 +2189,13 @@ the linked assets are available only for registered users (the thumbnail
 is publicly accessible).</p>
 <p>The authentication procedure for dataset with restricted access might
 differ depending on the data provider. For the NASA CMR, follow these
-steps in order to access data using Python: * Create a NASA Earthdata
-login account <a href="https://urs.earthdata.nasa.gov" class="external-link">here</a>; * Set
-up a netrc file with your credentials, e.g. by using <a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/daac_data_download_python/browse/EarthdataLoginSetup.py" class="external-link">this
-script</a>; * Define the following environment variables:</p>
+steps in order to access data using Python:</p>
+<ul>
+<li>Create a NASA Earthdata login account <a href="https://urs.earthdata.nasa.gov" class="external-link">here</a>;</li>
+<li>Set up a netrc file with your credentials, e.g. by using <a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/daac_data_download_python/browse/EarthdataLoginSetup.py" class="external-link">this
+script</a>;</li>
+<li>Define the following environment variables:</li>
+</ul>
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2203,11 +2206,26 @@ script</a>; * Define the following environment variables:</p>
 </div>
 </div>
 </div>
-<p>:::keypoints - Accessing satellite images via the providers’ API
-enables a more reliable and scalable data retrieval. - STAC catalogs can
-be browsed and searched using the same tools and scripts. -
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
+</h3>
+<div class="callout-content">
+<ul>
+<li>Accessing satellite images via the providers’ API enables a more
+reliable and scalable data retrieval.</li>
+<li>STAC catalogs can be browsed and searched using the same tools and
+scripts.</li>
+<li>
 <code>rioxarray</code> allows you to open and download remote raster
-files. :::</p>
+files.</li>
+</ul>
+</div>
+</div>
+</div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -3871,7 +3889,7 @@ fields;</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4285,7 +4303,7 @@ the data.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>Recall, if there were nodata values in our raster, we would need to
@@ -4471,7 +4489,7 @@ investigated.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>We crop the area of interest using <code>clip_box</code>:</li>
@@ -5394,7 +5412,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/aio.html",
-  "dateCreated": "2023-08-23",
+  "dateCreated": "2023-08-29",
   "dateModified": "2023-09-12",
   "datePublished": "2023-09-12"
 }
