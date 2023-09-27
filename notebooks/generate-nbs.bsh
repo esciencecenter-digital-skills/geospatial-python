@@ -1,0 +1,17 @@
+#!/bin/bash
+# Requirements: jupytext, pandoc
+# conda create -n jupytext -c conda-forge jupytext pandoc && conda activate jupytext
+
+episode_dir="../episodes"
+
+cwd=`pwd`
+cd ${episode_dir}
+for episode in *.md ; do
+  episode_Rmd=${episode%%.*}.Rmd
+  episode_ipynb=${episode%%.*}.ipynb
+  jupytext -o ${episode_Rmd} ${episode}
+  sed -i '' '1,$ s/``` python/```{python}/' ${episode_Rmd}
+  jupytext -o ${episode_ipynb} ${episode_Rmd} && mv ${episode_ipynb} ${cwd}/. && rm ${episode_Rmd}
+done
+cd ${cwd}
+
