@@ -36,9 +36,26 @@ This led to the following restructuring.
 For the narrative we chose to focus on wild fires. Results of large fires, like forest fires or fires on savannah landscapes can be identified on sattelite images. Scorched land leaves a particular signature on satellite images that can automatically be identified. By combining that with data about where people live we can estimate the impact of these large fires on our world, which in theory could also lead to insights on where to take certain mitigation matters. Based on the study of 
 [Zhai et al., 2023](https://doi.org/10.3390/f14040807) we also decided to include a calculation of slope classes in our workshop, since they identified a correlation slope and forest fires. As for the study area, we decided to focus a the island of Rhodos around July 2023, when large wild fires occured and around 19.000 people needed to be [evacuated](https://en.wikipedia.org/wiki/2023_Greece_wildfires).  
 
-In short the course will be restructured as follows:
+## Restructering
 
+**Episode 0** (keep)
+Setup
+
+**Episode 1-4** (keep) 
 For the moment we decided to keep chapters 0 to 4 the way they are (although some updates on the theory would actually be needed, since it contains a couple of false statements).
+
+**Episode 5** Access satellite imagery using Python (keep)
+After the setup and theory we start with the access to the satellite images and DEM episode, which is the same as episode 5 from the orginal setup. Here we focus at the island of Rhodos and in particular to July 2023. The satellite image we can get does not cover the whole island. As a nice to have we can lateron update the material to do some merging / mosaicing. The participants will see that the area scorched and will directly see the impact of the wildfire on the island.
+
+**Episode 6**  Vector data in Python *(refactoring of episode 7)*
+Once the participants have explored the area we are going to introduce them to vector data in python. We will let them obtain the geometry from Rhodos and use that as a mask to clip the satellite image with. We can either get the data from the build in datasets in geopandas or get them from [GADM](https://gadm.org/download_country.html) the [geopackage](https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_GRC.gpkg) or the [shapefile](https://geodata.ucdavis.edu/gadm/gadm4.1/shp/gadm41_GRC_shp.zip) (level-3). They will first learn how to select a polygon by it's attribute, followed by a clip on the satellite image. 
+
+
+
+
+
+
+
 
 
 
