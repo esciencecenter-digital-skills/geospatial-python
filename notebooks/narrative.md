@@ -36,7 +36,7 @@ This led to the following restructuring.
 For the narrative we chose to focus on wild fires. Results of large fires, like forest fires or fires on savannah landscapes can be identified on sattelite images. Scorched land leaves a particular signature on satellite images that can automatically be identified. By combining that with data about where people live we can estimate the impact of these large fires on our world, which in theory could also lead to insights on where to take certain mitigation matters. Based on the study of 
 [Zhai et al., 2023](https://doi.org/10.3390/f14040807) we also decided to include a calculation of slope classes in our workshop, since they identified a correlation slope and forest fires. As for the study area, we decided to focus a the island of Rhodos around July 2023, when large wild fires occured and around 19.000 people needed to be [evacuated](https://en.wikipedia.org/wiki/2023_Greece_wildfires).  
 
-## Restructering ~Cookbook
+## Restructering 
 
 **Episode 0** (keep)
 Setup
