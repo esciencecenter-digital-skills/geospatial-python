@@ -47,7 +47,10 @@ For the moment we decided to keep chapters 0 to 4 the way they are (although som
 **Episode 5** Access satellite imagery using Python (keep)
 After the setup and theory we start with the access to the satellite images and DEM episode. This is the same as episode 5 from the orginal setup. Here we focus at the island of Rhodos and in particular to July 2023. The satellite image we can get does not cover the whole island. The participants will see that the area scorched and will directly see the impact of the wildfire on the island. As a nice to have we can lateron update the material to do some merging / mosaicing. 
 
-**Episode 6**  Vector data in Python *(refactoring of episode 7)*
+**Episode 6** Read and visualize raster data *(refactoring of episode 6)*
+Keep in in the way it is, however instead perform it on the DEM (which makes more sense)
+
+**Episode 7**  Vector data in Python *(refactoring of episode 7)*
 Once the participants have explored the area, we are going to introduce them to vector data in python. We will let them obtain the geometry from Rhodos and use that as a mask to clip the satellite image with. We can either get the data from the build-in datasets in geopandas or get them from [GADM](https://gadm.org/download_country.html) we can choose to get the [geopackage](https://geodata.ucdavis.edu/gadm/gadm4.1/gpkg/gadm41_GRC.gpkg) or the [shapefile](https://geodata.ucdavis.edu/gadm/gadm4.1/shp/gadm41_GRC_shp.zip) (level-3). With this data they will have to select a polygon by it's attribute. 
 
 Next, we will download data from OpenStreetMaps, for this various options are available see [https://wiki.openstreetmap.org/wiki/Downloading_data](https://wiki.openstreetmap.org/wiki/Downloading_data) of which getting it from [Geofabrik](https://download.geofabrik.de/) is the easiest one. We might lateron consider to include an episode here where we dive into the API in which we configure the download exactly to our area of interest. In the narrative we explain that we want to relate the damage of the wild fires to build-up areas i.e. infrastructure and residential areas. We will either ask them to download the whole of [Greece](https://download.geofabrik.de/europe/greece.html) or prepare a selection of that dataset. 
@@ -64,13 +67,12 @@ allotments, commercial, industrial, residential (again, a disclaimer should be m
 
 Next, we will need to merge these layers into one layer containing all the valuable assets. Lateron we are going to use this dataset to perform the zonal statistics. 
 
-**Episode 7** Crop raster data with rioxarray and geopandas *(refactoring of episode 8)*
+**Episode 8** Crop raster data with rioxarray and geopandas *(refactoring of episode 8)*
 Create subsets from the DEM and the satellite images based on the shape of Rhodos (collected in episode 6). These subsets are then used for the next episodes.
+Use `reproject_match` to align DEM and image data.
 
-**Episode 8** Read and visualize raster data *(refactoring of episode 6)*
-Keep in in the way it is, however instead perform it on the DEM (which makes more sense)
 
-**Episode 9** Raster Calculations in Python *(refactoring of episode 9)*
+**Episode 9** Raster Calculations in Python *(refactoring of episode 9, including the statistics part originally in EP6)*
 Keep this one as much the way it is, however instead focus at the NDVI ranges for scorched areas see: (https://custom-scripts.sentinel-hub.com/sentinel-2/burned_area_ms/). We can use the values provided in that source. For now we leave the SWIR part out. (would be an option to do add that at a later stage). This episode should result in raster with categories of scorched areas (or even a binary raster).
 
 **Episode 10** Parallel raster computations using Dask *(refactoring of episode 11)*
