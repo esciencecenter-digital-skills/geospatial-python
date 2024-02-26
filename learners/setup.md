@@ -117,12 +117,12 @@ command in your terminal (use the **Anaconda prompt** on **Windows**).
    conda install -c conda-forge mamba
    ```
 
-   IMPORTANT: If your terminal responds to the above command with `conda: command not found` see the > <<troubleshooting>> section.
+   IMPORTANT: If your terminal responds to the above command with `conda: command not found` see the [Troubleshooting section](#troubleshooting-conda-command-not-found).
 
 3. Create the Python environment for the workshop by running:
 
    ```bash
-   mamba env create -n geospatial -f https://carpentries-incubator.github.io/geospatial-python/files/environment.yaml
+   mamba env create -n geospatial -f https://raw.githubusercontent.com/carpentries-incubator/geospatial-python/main/files/environment.yaml
    ```
 
    Note that this step can take several minutes.
