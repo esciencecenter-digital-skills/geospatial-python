@@ -641,34 +641,92 @@ accessor. For this we will use the <code>geometry</code> column of the
 <span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># Visualize the cropped image</span></span>
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>visual_clip.plot.imshow()</span></code></pre>
 </div>
-<figure><img src="../fig/E08/visual_clip.png" alt="Clip results" class="figure mx-auto d-block"></figure></div>
-<div class="section level3">
-<h3 id="match-two-rasters">Match two rasters<a class="anchor" aria-label="anchor" href="#match-two-rasters"></a></h3>
-<p>Sometimes you need to match two rasters with different extents,
-resolutions, or CRS. The <code>reproject_match</code> function can be
-used for this purpose. We will demonstrate this by matching the cropped
-raster <code>visual_clip</code> with the Digital Elevation Model
-(DEM),<code>rhodes_dem.tif</code> of Rhodes.</p>
-<p>First, let’s load the DEM:</p>
+<figure><img src="../fig/E08/visual_clip.png" alt="Clip results" class="figure mx-auto d-block"></figure><div id="exercise-get-the-red-band-for-the-rhodes" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="exercise-get-the-red-band-for-the-rhodes" class="callout-inner">
+<h3 class="callout-title">Exercise: Get the red band for the Rhodes<a class="anchor" aria-label="anchor" href="#exercise-get-the-red-band-for-the-rhodes"></a>
+</h3>
+<div class="callout-content">
+<p>Now that you have seen how clip a raster using a polygon, we want you
+to do this for the red band of the sattelite image. Use the shape of
+Rhodes from GADM and clip the red band with it. Furthermore, make sure
+to transform the no data values to Not a Number values.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>dem <span class="op">=</span> rioxarray.open_rasterio(<span class="st">'./data/dem/rhodes_dem.tif'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Solution</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># Step 1 - Load the datasets - Vector data</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>gdf_greece <span class="op">=</span> gpd.read_file(<span class="st">'./data_workshop/gadm/ADM_ADM_3.gpkg'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>gdf_rhodes <span class="op">=</span> gdf_greece.loc[gdf_greece[<span class="st">'NAME_3'</span>]<span class="op">==</span><span class="st">'Rhodos'</span>]</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># Step 2 - Load the raster red band</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="im">import</span> rioxarray</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>path_red <span class="op">=</span> <span class="st">'./data_workshop/sentinel2/red.tif'</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>red <span class="op">=</span> rioxarray.open_rasterio(path_red, overview_level<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co"># Step 3 - It will not work, since it is not projected yet</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a>gdf_rhodes <span class="op">=</span> gdf_rhodes.to_crs(red.rio.crs)</span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co"># Step 4 - Clip the two</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a>red_clip <span class="op">=</span> red.rio.clip(gdf_rhodes[<span class="st">"geometry"</span>])</span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co"># Step 5 - assing nan values to no data</span></span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a>red_clip_nan <span class="op">=</span> red_clip.where(red_clip<span class="op">!=</span>red_clip.rio.nodata)</span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="co"># Step 6 - Visualize the result</span></span>
+<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a>red_clip_nan.plot()</span></code></pre>
 </div>
-<p>And visualize it:</p>
+<figure><img src="../fig/E08/solution_excercise.png" alt="rhodes_builtup_buffer" class="figure mx-auto d-block"></figure></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="match-two-rasters">Match two rasters<a class="anchor" aria-label="anchor" href="#match-two-rasters"></a></h3>
+<p>Sometimes you need to match two rasters with different extents,
+resolutions, or CRS. For this you can use the <a href="https://corteva.github.io/rioxarray/stable/examples/reproject_match.html#Reproject-Match" class="external-link"><code>reproject_match</code></a>
+function . We will demonstrate this by matching the cropped raster
+<code>visual_clip</code> with the Digital Elevation Model
+(DEM),<code>rhodes_dem.tif</code> of Rhodes.</p>
+<p>First, let’s load the DEM:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>dem.plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>dem <span class="op">=</span> rioxarray.open_rasterio(<span class="st">'./data/dem/rhodes_dem.tif'</span>)</span></code></pre>
+</div>
+<p>And visualize it:</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>dem.plot()</span></code></pre>
 </div>
 <figure><img src="../fig/E08/dem.png" alt="DEM" class="figure mx-auto d-block"></figure><p>From the visualization, we can see that the DEM has a different
 extent, resolution and CRS compared to the cropped visual image. We can
 also confirm this by checking the CRS of the two images:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="bu">print</span>(dem.rio.crs)</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="bu">print</span>(visual_clip.rio.crs)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="bu">print</span>(dem.rio.crs)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="bu">print</span>(visual_clip.rio.crs)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -679,16 +737,16 @@ also confirm this by checking the CRS of the two images:</p>
 <p>We can use the <code>reproject_match</code> function to match the two
 rasters. One can choose to match the dem to the visual image or vice
 versa. Here we will match the DEM to the visual image:</p>
-<div class="codewrapper sourceCode" id="cb19">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>dem_matched <span class="op">=</span> dem.rio.reproject_match(visual_clip)</span></code></pre>
-</div>
-<p>And then visualize the matched DEM:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>dem_matched.plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>dem_matched <span class="op">=</span> dem.rio.reproject_match(visual_clip)</span></code></pre>
+</div>
+<p>And then visualize the matched DEM:</p>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>dem_matched.plot()</span></code></pre>
 </div>
 <figure><img src="../fig/E08/dem_matched.png" alt="Matched DEM" class="figure mx-auto d-block"></figure><p>As we can see, <code>reproject_match</code> does a lot of helpful
 things in one line of code:</p>
@@ -697,10 +755,10 @@ things in one line of code:</p>
 <li>It matches the resolution.</li>
 </ol><p>Finally, we can save the matched DEM for later use. We save it as a
 Cloud-Optimized GeoTIFF (COG) file:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>dem_match.rio.to_raster(<span class="st">'dem_rhodes_match.tif'</span>, driver<span class="op">=</span><span class="st">'COG'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>dem_matched.rio.to_raster(<span class="st">'dem_rhodes_match.tif'</span>, driver<span class="op">=</span><span class="st">'COG'</span>)</span></code></pre>
 </div>
 <div id="code-tip-1" class="callout">
 <div class="callout-square">

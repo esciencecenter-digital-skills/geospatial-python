@@ -440,10 +440,10 @@ assests of Rhodes. As mentioned in <a href="02-intro-vector-data.html">Episode 2
 Data</a>, vector data uses points, lines, and polygons to depict
 specific features on the Earth’s surface. These geographic elements can
 have one or more attributes, like ‘name’ and ‘population’ for a city. In
-this epidoe we’ll be using two open data sources: the Database of Global
-Administrative Areas (GADM) dataset to generate a polygon for the island
-of Rhodes and and Open Street Map data for the vital infrastructure and
-valuable assets.</p>
+this episode we’ll be using two open data sources: the Database of
+Global Administrative Areas (GADM) dataset to generate a polygon for the
+island of Rhodes and and Open Street Map data for the vital
+infrastructure and valuable assets.</p>
 <p>To handle the vector data in python we use the package <a href="https://geopandas.org/en/stable/" class="external-link"><code>geopandas</code></a>. This
 package allows us to open, manipulate, and write vector dataset through
 python.</p>
@@ -838,9 +838,9 @@ we provided.</p>
 </h3>
 <div class="callout-content">
 <p>Create a <code>builtup_buffer</code> from the file
-<code>data/osm_landuse.gpkg</code> by the following steps:</p>
-<ol style="list-style-type: decimal"><li>Load the land use data from <code>data/osm_landuse.gpkg</code> and
-mask it with the administrative boundary of Rhodes Island
+<code>data/osm/osm_landuse.gpkg</code> by the following steps:</p>
+<ol style="list-style-type: decimal"><li>Load the land use data from <code>data/osm/osm_landuse.gpkg</code>
+and mask it with the administrative boundary of Rhodes Island
 (<code>gdf_rhodes</code>).</li>
 <li>Select the land use data for “commercial”, “industrial”, and
 “residential”.</li>
@@ -848,7 +848,7 @@ mask it with the administrative boundary of Rhodes Island
 <li>Visualize the results.</li>
 </ol><p>After completing the exercise, answer the following questions:</p>
 <ol style="list-style-type: decimal"><li>How many unique land use types are there in
-<code>landuse.gpkg</code>?</li>
+<code>osm_landuse.gpkg</code>?</li>
 <li>After selecting the three types of land use, how many entries (rows)
 are there in the results?</li>
 </ol><p>Hints:</p>
@@ -868,13 +868,13 @@ column.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Read data with a mask of Rhodes</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>gdf_landuse <span class="op">=</span> gpd.read_file(<span class="st">'../data/osm/landuse.gpkg'</span>, mask<span class="op">=</span>gdf_rhodes)</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>gdf_landuse <span class="op">=</span> gpd.read_file(<span class="st">'./data_workshop/osm/osm_landuse.gpkg'</span>, mask<span class="op">=</span>gdf_rhodes)</span>
 <span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="co"># Find number of unique landuse types</span></span>
 <span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(gdf_landuse[<span class="st">'fclass'</span>].unique()))</span>
