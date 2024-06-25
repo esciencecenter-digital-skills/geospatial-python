@@ -196,12 +196,22 @@
                   <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         Summary and Schedule
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+        
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#data-carpentries">Data Carpentries</a></li>
+<li><a href="#geospatial-raster-and-vector-data-with-python">Geospatial Raster and Vector Data with Python</a></li>
+<li><a href="#case-study---wildfires">Case study - Wildfires</a></li>
+<li><a href="#python-libraries-used-in-this-lesson">Python libraries used in this lesson</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -305,6 +315,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush13">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading13">
+        <a href="12-data-cube.html">12. Data cubes with ODC-STAC</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -355,27 +374,89 @@
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
 
-<p>Data Carpentry’s teaching is hands-on, so participants are encouraged
-to use their own computers to ensure the proper setup of tools for an
-efficient workflow. To most effectively use these materials, please make
-sure to download the data and install everything before working through
-this lesson.</p>
+<section id="data-carpentries"><h2 class="section-heading">Data Carpentries<a class="anchor" aria-label="anchor" href="#data-carpentries"></a>
+</h2>
+<hr class="half-width"><p><a href="https://datacarpentry.org/" class="external-link">Data Carpentry’s</a> teaching is
+hands-on. Participants are encouraged to use their own computers to
+ensure the proper setup of tools for an efficient workflow.</p>
+</section><section id="geospatial-raster-and-vector-data-with-python"><h2 class="section-heading">Geospatial Raster and Vector Data with Python<a class="anchor" aria-label="anchor" href="#geospatial-raster-and-vector-data-with-python"></a>
+</h2>
+<hr class="half-width"><p>In this lesson you will learn how to work with geospatial data and
+how to process these with python. Python is one of the most popular
+programming languages for data science and analytics, with a large and
+steadily growing community in the field of Earth and Space Sciences. The
+lesson is meant for participants with a working basic knowledge of
+Python and allow them to to familiarize with the world of geospatial
+raster and vector data. (If you are unfamiliar to python we recommend
+you to follow <a href="https://swcarpentry.github.io/python-novice-inflammation/" class="external-link">this
+course</a> or have a look <a href="https://greenteapress.com/thinkpython2/thinkpython2.pdf" class="external-link">here</a>
+). In the <em>Introduction to Geospatial Raster and Vector Data with
+Python</em> lesson you will be introduced to a set of tools from the
+Python ecosystem and learn how these can be used to carry out geospatial
+data analysis tasks. In particular, you will learn to work with
+satellite images (i.e. <a href="https://sentinel.esa.int/web/sentinel/missions/sentinel-2" class="external-link">the
+Copernicus Sentinel-2 mission</a> ) and open topographical geo-datasets
+(i.e. <a href="https://www.openstreetmap.org/#map=14/45.2935/18.7986" class="external-link">OpenStreetmap</a>).
+You will learn how these spatial datasets can be accessed, explored,
+manipulated and visualized using Python.</p>
+</section><section id="case-study---wildfires"><h2 class="section-heading">Case study - Wildfires<a class="anchor" aria-label="anchor" href="#case-study---wildfires"></a>
+</h2>
+<hr class="half-width"><p>As a case study for this lesson we will focus on wildfires. According
+to the IPCC assessment report, the wildfire seasons are lengthening as a
+result of changes in temperature and increasing drought conditions <a href="https://www.ipcc.ch/report/ar6/wg2/about/frequently-asked-questions/keyfaq1/" class="external-link">IPCC</a>.
+To analyse the impact of these wildfires, we will focus on the wildfire
+that occured on the Greek island <a href="https://news.sky.com/story/wildfires-on-rhodes-force-hundreds-of-holidaymakers-to-flee-their-hotels-12925583" class="external-link">Rhodes
+in the summer of 2023</a>, which had a devastating effect and led to the
+evacuation of <a href="https://en.wikipedia.org/wiki/2023_Greece_wildfires" class="external-link">19.000
+people</a>. In this lesson we are going analyse the effect of this
+disaster by estimating which built-up areas were affected by these
+wildfires. Furthermore, we will analyse which vegetation and land-use
+types have been affected the most by the wildfire in order to get an
+understanding of which areas are more vulnerable to wildfires. Finally
+we are going to estimate which locations would be most suitable for
+placing watchtowers in the region. The analysis that we set up provides
+insights in the effect of the wildfire and generates input for wildfire
+mitigation strategies.</p>
+<p><em>Note, that the analyses presented in this lesson are developed
+for educational purposes. Therefore in some occasions the analysis steps
+have been simplified and assumptions have been made.</em></p>
 <p>The data used in this lesson includes optical satellite images from
 <a href="https://sentinel.esa.int/web/sentinel/missions/sentinel-2" class="external-link">the
-Copernicus Sentinel-2 mission</a> and public geographical datasets from
-<a href="https://www.pdok.nl" class="external-link">the dedicated distribution platform of the
-Dutch government</a>. These are real-world data sets that entail
+Copernicus Sentinel-2 mission</a> and topographical data from <a href="https://www.openstreetmap.org/#map=14/45.2935/18.7986" class="external-link">OpenStreetMap
+(OSM)</a>. These datasets are real-world open data sets that entail
 sufficient complexity to teach many aspects of data analysis and
-management. They have been selected to allow students to focus on the
-core ideas and skills being taught while offering the chance to
-encounter common challenges with geospatial data.</p>
-<!--
+management. The datasets have been selected to allow participants to
+focus on the core ideas and skills being taught while offering the
+chance to encounter common challenges with geospatial data. Furthermore,
+we have selected datasets which are available anywhere on earth.</p>
+<p>During this lesson we will setup an analysis pipeline which
+identifies scorched areas based bands of satellite images collected
+after the disaster in july 2023. Next, we will analyse the vegetation
+type, by calculating the <a href="https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index" class="external-link">NDVI
+index</a>, that was present in these areas before the wildfire by
+looking at satellite images before the disaster and compare them with
+the scorched areas. To confront the effected built-up areas and most
+important roads, we will be using OSM vector data and compare that with
+the scorched areas identified above. Finally, we will use elevation data
+to perform viewshed analyses in order to locate the best locations for
+(hypothetical) watchtowers, which in theory would allow to identify a
+wildfire earlier, thus allowing to react more quickly.</p>
+<p>To most effectively use these materials, make sure to download the
+data and install everything before working through this lesson (this
+especially accounts for learners that follow this lesson in a
+workshop).</p>
+</section><section id="python-libraries-used-in-this-lesson"><h2 class="section-heading">Python libraries used in this lesson<a class="anchor" aria-label="anchor" href="#python-libraries-used-in-this-lesson"></a>
+</h2>
+<hr class="half-width"><p>The main python libraries that are used in this lesson are:</p>
+<ul><li><a href="https://geopandas.org/en/stable/" class="external-link">geopandas</a></li>
+<li><a href="https://github.com/corteva/rioxarray" class="external-link">rioxarray</a></li>
+<li><a href="https://xarray-spatial.org/" class="external-link">xarray-spatial</a></li>
+<li><a href="https://www.dask.org/" class="external-link">dask</a></li>
+<li><a href="https://pystac.readthedocs.io/en/stable/" class="external-link">pystac</a></li>
+</ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- -->
-
-
-      <section id="schedule"><table class="table table schedule table-striped" role="presentation"><tbody><tr><td></td><td><a href="#setup">Setup Instructions</a></td><td> Download files required for the lesson</td>
+ --></section><section id="schedule"><table class="table table schedule table-striped" role="presentation"><tbody><tr><td></td><td><a href="#setup">Setup Instructions</a></td><td> Download files required for the lesson</td>
           </tr><tr><td>
 <span class="visually-hidden">Duration: </span>00h 00m
 </td>
@@ -459,7 +540,7 @@ and geopandas</a>
 How can I crop my raster data to the area of interest?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>06h 05m
+<span class="visually-hidden">Duration: </span>05h 05m
 </td>
 <td>
  9. <a href="09-raster-calculations.html">Raster Calculations in
@@ -470,7 +551,7 @@ How do I perform calculations on rasters and extract pixel values for
 defined locations?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>07h 20m
+<span class="visually-hidden">Duration: </span>06h 20m
 </td>
 <td>
 10. <a href="10-zonal-statistics.html">Calculating Zonal Statistics on
@@ -481,7 +562,7 @@ How to compute raster statistics on different zones delineated by vector
 data?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>08h 20m
+<span class="visually-hidden">Duration: </span>07h 00m
 </td>
 <td>
 11. <a href="11-parallel-raster-computations.html">Parallel raster
@@ -494,7 +575,16 @@ good practices in applying parallelization to my raster
 calculations?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>09h 30m
+<span class="visually-hidden">Duration: </span>07h 55m
+</td>
+<td>
+12. <a href="12-data-cube.html">Data cubes with ODC-STAC</a>
+</td>
+<td>
+a<br>:::
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>08h 40m
 </td>
 <td>
 Finish
@@ -513,12 +603,29 @@ any links that you are not going to use.
 <code>geospatial-python</code>.</li>
 <li>Within <code>geospatial-python</code>, create a directory called
 <code>data</code>.</li>
-<li>Download the following files and save them to the just created
-<code>data</code> directory (<strong>do not unzip the files</strong>, we
-will read from them directly):</li>
-</ol><ul><li><a href="https://figshare.com/ndownloader/files/37729413" class="external-link">brpgewaspercelen_definitief_2020_small.gpkg</a></li>
-<li><a href="https://figshare.com/ndownloader/files/37729416" class="external-link">brogmwvolledigeset.zip</a></li>
-<li><a href="https://figshare.com/ndownloader/files/37729419" class="external-link">status_vaarweg.zip</a></li>
+<li>Download the data required for this lesson via <a href="https://figshare.com/ndownloader/articles/25721754/versions/3" class="external-link">this
+link</a> (612MB).</li>
+<li>Unzip downloaded files and save them to the just created
+<code>data</code> directory.</li>
+</ol><p>Now you should have the following files in the <code>data</code>
+directory:</p>
+<ul><li>
+<code>sentinel-2</code> - This is a directory containing multiple
+bands of Sentinel-2 raster images over the island of Rhodes, on Aug 27,
+2023.</li>
+<li>
+<code>dem/rhodes_dem.tif</code> - This is the Digital Elevation
+Model (DEM) of the island of Rhodes, retrieved from <a href="https://spacedata.copernicus.eu/collections/copernicus-digital-elevation-model" class="external-link">Copernicus
+Digital Elevation Model (GLO-30 instance)</a> and modified for this
+course.</li>
+<li>
+<code>gadm/ADM_ADM_3.gpkg</code> - This is the administration
+boundaries of Rhodes, downloaded from <a href="https://gadm.org/" class="external-link">GADM</a> and modified for this course.</li>
+<li>
+<code>osm/osm_landuse.gpkg</code> and
+<code>osm/osm_roads.gpkg</code> - They are landuse poylgons and roads
+polylines of Rhodes, downloaded from <a href="../www.openstreetmaps.org">Openstreetmaps</a> via <a href="http://www.geofabrik.de/data/download.html" class="external-link">Geofabrik</a> and
+modified for this course.</li>
 </ul></section><section id="software-setup"><h2 class="section-heading">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
 </h2>
 <hr class="half-width"><div class="section level3">
@@ -552,7 +659,7 @@ the workshop begins.</p>
   Windows
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><a href="https://www.youtube.com/watch?v=xxQ0mzZ8UvA" class="external-link">Video
 tutorial</a></p>
@@ -579,7 +686,7 @@ selected.</li>
   Mac OS
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><a href="https://www.youtube.com/watch?v=TcSAln46u9U" class="external-link">Video
 tutorial</a></p>
@@ -604,7 +711,7 @@ problems in the long run and should be avoided.</p></li>
   Linux
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Note that the following installation steps require you to work from
 the shell. If you run into any difficulties, please request help before
@@ -672,6 +779,18 @@ section</a>.</p>
 </li>
 <li>
 <p>Create the Python environment for the workshop by running:</p>
+<p>The main python libraries that are used in this lesson are:</p>
+<ul><li><a href="https://geopandas.org/en/stable/" class="external-link">geopandas</a></li>
+<li><a href="https://github.com/corteva/rioxarray" class="external-link">rioxarray</a></li>
+<li><a href="https://xarray-spatial.org/" class="external-link">xarray-spatial</a></li>
+<li><a href="https://www.dask.org/" class="external-link">dask</a></li>
+<li><a href="https://pystac.readthedocs.io/en/stable/" class="external-link">pystac</a></li>
+</ul><p>In order to <strong>not</strong> have to install all these libraries
+and their dependencies seperately, a .yaml configuration file has been
+created which will install all of them automatically. (If you still want
+to install all these packages seperately you could use <code>pip</code>.
+However, the easiest way is just to execute the .yaml file run the
+following command:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -693,7 +812,8 @@ message in the terminal:</p>
 </div>
 </li>
 <li>
-<p>Activate the <code>geospatial</code> environment:</p>
+<p>Now Activate the <code>geospatial</code> environment by
+running:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -838,7 +958,7 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/index.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/index.html",
-  "dateCreated": "2024-06-22",
+  "dateCreated": "2024-06-25",
   "dateModified": "2024-06-25",
   "datePublished": "2024-06-25"
 }

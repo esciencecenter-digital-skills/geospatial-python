@@ -117,11 +117,11 @@
   Introduction to Geospatial Raster and Vector Data with Python
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 6%" class="percentage">
-    6%
+<aside class="col-md-12 lesson-progress"><div style="width: 7%" class="percentage">
+    7%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 6%" aria-valuenow="6" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 7%" aria-valuenow="7" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -317,6 +317,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush13">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading13">
+        <a href="12-data-cube.html">12. Data cubes with ODC-STAC</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -375,7 +384,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Coordinate Reference Systems</h1>
-        <p>Last updated on 2023-07-27 |
+        <p>Last updated on 2024-06-25 |
         
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/03-crs.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -432,23 +441,23 @@ throughout this workshop.</p>
 </div>
 </div>
 </div>
-<p>The CRS associated with a dataset tells your mapping software (for
-example Python) where the raster is located in geographic space. It also
-tells the mapping software what method should be used to flatten or
-project the raster in geographic space.</p>
-<figure><img src="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg" alt="US difference projections" class="figure mx-auto d-block"><div class="figcaption">Maps of the United States in different
-projections (Source: opennews.org)</div>
-</figure><p>The above image shows maps of the United States in different
-projections. Notice the differences in shape associated with each
-projection. These differences are a direct result of the calculations
-used to flatten the data onto a 2-dimensional map.</p>
-<p>There are lots of great resources that describe coordinate reference
+<p>The CRS associated with a dataset tells your mapping software where
+the raster is located in geographic space. It also tells the mapping
+software what method should be used to flatten or project the raster in
+geographic space.</p>
+<p>The image below (figure 3.1) shows maps of the United States in
+different projections. Notice the differences in shape associated with
+each projection. These differences are a direct result of the
+calculations used to flatten the data onto a 2-dimensional map.</p>
+<figure><img src="https://media.opennews.org/cache/06/37/0637aa2541b31f526ad44f7cb2db7b6c.jpg" alt="US difference projections" class="figure mx-auto d-block"><div class="figcaption">Figure 3.1: Maps of the United States in
+different projections (Source: opennews.org)</div>
+</figure><p>There are lots of great resources that describe coordinate reference
 systems and projections in greater detail. For the purposes of this
 workshop, what is important to understand is that data from the same
-location but saved in different projections will not line up in any GIS
-or other program. Thus, it’s important when working with spatial data to
-identify the coordinate reference system applied to the data and retain
-it throughout data processing and analysis.</p>
+location but saved in different projections will not line up. Thus, it
+is important when working with spatial data to identify the coordinate
+reference system applied to the data and retain it throughout data
+processing and analysis.</p>
 </section><section id="components-of-a-crs"><h2 class="section-heading">Components of a CRS<a class="anchor" aria-label="anchor" href="#components-of-a-crs"></a>
 </h2>
 <hr class="half-width"><p>CRS information has three components:</p>
@@ -457,13 +466,17 @@ angular units (i.e. degrees) and defines the starting point (i.e. where
 is [0,0]?) so the angles reference a meaningful spot on the earth.
 Common global datums are WGS84 and NAD83. Datums can also be local - fit
 to a particular area of the globe, but ill-fitting outside the area of
-intended use. In this workshop, we will use the <a href="https://www.linz.govt.nz/data/geodetic-system/datums-projections-and-heights/geodetic-datums/world-geodetic-system-1984-wgs84" class="external-link">WGS84
-datum</a>.</p></li>
+intended use For instance local Cadastre, Land Registry and Mapping
+Agencies require a high quality of their datasets, which can be obtained
+using a local system. In this workshop, we will use the <a href="https://www.linz.govt.nz/data/geodetic-system/datums-projections-and-heights/geodetic-datums/world-geodetic-system-1984-wgs84" class="external-link">WGS84
+datum</a>. The datum is often also refered to as the Geographical
+Coordinate System.</p></li>
 <li><p><strong>Projection:</strong> A mathematical transformation of the
 angular measurements on a round earth to a flat surface (i.e. paper or a
 computer screen). The units associated with a given projection are
 usually linear (feet, meters, etc.). In this workshop, we will see data
-in two different projections.</p></li>
+in two different projections. Note that the projection is also often
+refered to as Projected Coordinate System.</p></li>
 <li><p><strong>Additional Parameters:</strong> Additional parameters are
 often necessary to create the full coordinate reference system. One
 common additional parameter is a definition of the center of the map.
@@ -496,7 +509,17 @@ this analogy?</li>
 </div>
 </section><section id="which-projection-should-i-use"><h2 class="section-heading">Which projection should I use?<a class="anchor" aria-label="anchor" href="#which-projection-should-i-use"></a>
 </h2>
-<hr class="half-width"><p>To decide if a projection is right for your data, answer these
+<hr class="half-width"><p>A well know projection is the <a href="https://en.wikipedia.org/wiki/Mercator_projection" class="external-link">Mercator
+projection</a> introduced by the Flamisch Cartographer Gerardus Mercator
+in the 16th Century. This so-called cilindrical projection, meaning that
+a virtual cilinder is place on the globe to flatten it, it relatively
+accurate near to the equator, but towards the poles blows things up
+see:<a href="https://gisgeography.com/cylindrical-projection/" class="external-link">Cylindrical
+projection</a>. The main advantage of the Mercator projection is that it
+is very suitable for navigation purpuses since it always north as
+<em>up</em> and south and as <em>down</em>, in the 17th century this
+projection was essential for sailors to navigate the oceans.</p>
+<p>To decide if a projection is right for your data, answer these
 questions:</p>
 <ul><li>What is the area of minimal distortion?</li>
 <li>What aspect of the data does it preserve?</li>
@@ -607,7 +630,7 @@ collected from?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul><li>Projection is UTM, zone 18, datum is WGS84, ellipsoid is WGS84.</li>
 <li>The data is in meters.</li>
@@ -661,6 +684,10 @@ the Right Map Projection.</a></li>
 <a href="https://www.youtube.com/embed/KUF_Ckv8HbE" class="external-link">Video</a>
 highlighting how map projections can make continents seems
 proportionally larger or smaller than they actually are.</li>
+<li>
+<a href="https://www.thetruesize.com/" class="external-link">The True size</a> An
+intuitive webmap that allows you to drag countries to another place in
+the webmercator projection.</li>
 </ul></div>
 </div>
 </div>
@@ -676,6 +703,7 @@ proportionally larger or smaller than they actually are.</li>
 specific coordinate reference system.</li>
 <li>A coordinate reference system includes datum, projection, and
 additional parameters specific to the dataset.</li>
+<li>All maps are distored because of the projection.</li>
 </ul></div>
 </div>
 </div>
@@ -740,8 +768,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/03-crs.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/03-crs.html",
-  "dateCreated": "2024-06-22",
-  "dateModified": "2023-07-27",
+  "dateCreated": "2024-06-25",
+  "dateModified": "2024-06-25",
   "datePublished": "2024-06-25"
 }
 
