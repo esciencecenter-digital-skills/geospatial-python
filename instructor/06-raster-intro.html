@@ -380,7 +380,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Read and visualize raster data</h1>
-        <p>Last updated on 2024-06-25 |
+        <p>Last updated on 2024-06-30 |
         
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/06-raster-intro.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -1059,23 +1059,25 @@ the <code>nodata</code> value of the raster:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>rhodes_red_altmask_80 <span class="op">=</span> rhodes_red_80.where(rhodes_red_80<span class="op">!=</span>rhodes_red_80.rio.nodata)</span></code></pre>
 </div>
-<p>*[comment mdk]: Do I get it right, that this is actually the same as
-we have sone above with the masking?</p>
 <p>Either way will change the <code>nodata</code> value from 0 to
 <code>nan</code>. Now if we compute the statistics again, the missing
 data will not be considered. Let´s compare them:</p>
-<pre><code>print(rhodes_red_80.min())
-print(rhodes_red_mask_80.min())
-print(rhodes_red_80.max())
-print(rhodes_red_mask_80.max())
-print(rhodes_red_80.mean())
-print(rhodes_red_mask_80.mean())
-print(rhodes_red_80.std())
-print(rhodes_red_mask_80.std())
-```python
-
-```output
-&lt;xarray.DataArray ()&gt; Size: 2B
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_80.<span class="bu">min</span>())</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_mask_80.<span class="bu">min</span>())</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_80.<span class="bu">max</span>())</span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_mask_80.<span class="bu">max</span>())</span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_80.mean())</span>
+<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_mask_80.mean())</span>
+<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_80.std())</span>
+<span id="cb39-8"><a href="#cb39-8" tabindex="-1"></a><span class="bu">print</span>(rhodes_red_mask_80.std())</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>&lt;xarray.DataArray ()&gt; Size: 2B
 array(0, dtype=uint16)
 Coordinates:
     spatial_ref  int32 4B 0
@@ -1107,6 +1109,7 @@ Coordinates:
 array(539.82855, dtype=float32)
 Coordinates:
     spatial_ref  int32 4B 0</code></pre>
+</div>
 <p>And if we plot the image, the <code>nodata</code> pixels are not
 shown because they are not 0 anymore:</p>
 <figure><img src="../fig/E06/rhodes_red_80_B04_robust_nan.png" alt="raster plot masking missing values" class="figure mx-auto d-block"><div class="figcaption">Raster plot after masking out missing
@@ -1128,11 +1131,11 @@ than one band.</p>
 <figure><img src="../fig/E06/single_multi_raster.png" alt="multi-band raster" class="figure mx-auto d-block"><div class="figcaption">Sketch of a multi-band raster image</div>
 </figure><p>The <code>visual</code> asset in the Sentinel-2 scene is a multiband
 asset. Similar to the red band, we can load it by:</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>rhodes_visual <span class="op">=</span> rioxarray.open_rasterio(<span class="st">'data/sentinel2/visual.tif'</span>, overview_level<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>rhodes_visual</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>rhodes_visual <span class="op">=</span> rioxarray.open_rasterio(<span class="st">'data/sentinel2/visual.tif'</span>, overview_level<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>rhodes_visual</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1161,10 +1164,10 @@ you expect. Many functions, especially the ones that plot images, expect
 a raster array to have a particular shape. One can also check the shape
 using the <a href="https://docs.xarray.dev/en/latest/generated/xarray.DataArray.shape.html" class="external-link"><code>.shape</code></a>
 attribute:</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>rhodes_visual.shape</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>rhodes_visual.shape</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1173,10 +1176,10 @@ attribute:</p>
 </div>
 <p>One can visualize the multi-band data with the
 <code>DataArray.plot.imshow()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>rhodes_visual.plot.imshow()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>rhodes_visual.plot.imshow()</span></code></pre>
 </div>
 <figure><img src="../fig/E06/rhodes_multiband_80.png" alt="true-color image overview" class="figure mx-auto d-block"><div class="figcaption">Overview of the true-color image (multi-band
 raster)</div>
@@ -1214,10 +1217,10 @@ set the aspect ratio to be 1. For example, we can choose the size to be
 of <code>DataArray.plot.imshow()</code>, when specifying the
 <code>aspect</code> argument, <code>size</code> also needs to be
 provided.</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>rhodes_visual.plot.imshow(size<span class="op">=</span><span class="dv">5</span>, aspect<span class="op">=</span><span class="dv">1</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>rhodes_visual.plot.imshow(size<span class="op">=</span><span class="dv">5</span>, aspect<span class="op">=</span><span class="dv">1</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/E06/rhodes_multiband_80_equal_aspect.png" alt="raster plot with correct aspect ratio" class="figure mx-auto d-block"><div class="figcaption">Overview of the true-color image with the
 correct aspect ratio</div>
@@ -1290,7 +1293,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.5" class="external-link">pegboard (0.7.5)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1311,9 +1314,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/06-raster-intro.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/06-raster-intro.html",
-  "dateCreated": "2024-06-25",
-  "dateModified": "2024-06-25",
-  "datePublished": "2024-06-25"
+  "dateCreated": "2024-06-30",
+  "dateModified": "2024-06-30",
+  "datePublished": "2024-06-30"
 }
 
   </script><script>
