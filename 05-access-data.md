@@ -314,7 +314,7 @@ following syntax (see [docs](https://pystac-client.readthedocs.io/en/stable/usag
 
 ```python
 search = client.search(
-    collections=[collection],
+    collections=[collection_sentinel_2_l2a],
     intersects=point,
     datetime='2023-07-01/2023-08-31',
     query=['eo:cloud_cover<1']
@@ -342,7 +342,7 @@ To load the saved search results as a `ItemCollection` we can use [`pystac.ItemC
 
 ```python
 import pystac
-items_loaded = pystac.ItemCollection.from_file("../data/stac_json/rhodes_sentinel-2.json")
+items_loaded = pystac.ItemCollection.from_file("rhodes_sentinel-2.json")
 ```
 
 The loaded item collection (`items_loaded`) is equivalent to the one returned earlier by `search.item_collection()` (`items`). You can thus perform the same actions on it: you can check the number of items (`len(items_loaded)`), you can loop over items (`for item in items_loaded: ...`), and you can access individual elements using their index (`items_loaded[0]`).
