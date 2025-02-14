@@ -4,6 +4,7 @@
 "config.yaml" "36ecf0d8c86d44ced0b1bd223bc22fe5" "site/built/config.yaml" "2024-02-26"
 "index.md" "0c962805478a2de400bfc44e5d81e0e6" "site/built/index.md" "2024-06-25"
 "links.md" "f70df760c54e918207d3fafb9f48e1bf" "site/built/links.md" "2023-07-27"
+"workshops.md" "0406c702206b0c080de8c4329e5e0738" "site/built/workshops.md" "2025-02-14"
 "episodes/01-intro-raster-data.md" "8a040fd799ddc19bb53644930bc15e82" "site/built/01-intro-raster-data.md" "2024-06-25"
 "episodes/02-intro-vector-data.md" "3bf0a19a7e0e3990a0f2ee02815d1147" "site/built/02-intro-vector-data.md" "2024-06-25"
 "episodes/03-crs.md" "40e659ca7228c07f84c40b51b601dc55" "site/built/03-crs.md" "2024-06-25"
