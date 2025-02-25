@@ -382,7 +382,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Calculating Zonal Statistics on Rasters</h1>
-        <p>Last updated on 2024-06-25 |
+        <p>Last updated on 2025-02-25 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/10-zonal-statistics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -484,10 +484,13 @@ column, and the code of the region.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[[&lt;POLYGON ((569708.927 3972332.358, 569709.096 3972333.79, 569710.406 3972341...&gt;,
+<pre class="output" tabindex="0"><code>[[&lt;POLYGON ((602761.27 4013139.375, 602764.522 4013072.287, 602771.476 4012998...&gt;,
   1],
- [&lt;MULTIPOLYGON (((567767.095 3970740.732, 567767.548 3970741.604, 567772.083 ...&gt;,
-  2]]</code></pre>
+ [&lt;POLYGON ((602779.808 4013298.838, 602772.497 4013266.01, 602768.577 4013242...&gt;,
+  1],
+ [&lt;POLYGON ((602594.855 4012962.661, 602593.423 4012983.028, 602588.485 401302...&gt;,
+  1],
+  ...]</code></pre>
 </div>
 <p>The raster image <code>burned</code> is a 3D image with a “band”
 dimension.</p>
@@ -499,7 +502,7 @@ dimension.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>(1, 1131, 1207)</code></pre>
+<pre class="output" tabindex="0"><code>(1, 4523, 4828)</code></pre>
 </div>
 <p>To create the grid space, we only need the two spatial dimensions. We
 can used <code>.squeeze()</code> to drop the band dimension:</p>
@@ -512,7 +515,7 @@ can used <code>.squeeze()</code> to drop the band dimension:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>(1131, 1207)</code></pre>
+<pre class="output" tabindex="0"><code>(4523, 4828)</code></pre>
 </div>
 <p>Now we can use <code>features.rasterize</code> from
 <code>rasterio</code> to rasterize the vector data <code>assets</code>
@@ -561,10 +564,10 @@ as a template:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>    zone	  mean	    max	min	sum	    std	      var	      count
-0	    0	    0.022570	1.0	0.0	28929.0	0.148528	0.022061	1281749.0
-1	    1	    0.009607	1.0	0.0	568.0	  0.097542	0.009514	59125.0
-2	    2	    0.000000	0.0	0.0	0.0	    0.000000	0.000000	24243.0</code></pre>
+<pre class="output" tabindex="0"><code>   zone      mean  max  min       sum       std       var       count
+0     0  0.023504  1.0  0.0  485164.0  0.151498  0.022952  20641610.0
+1     1  0.010361  1.0  0.0    9634.0  0.101259  0.010253    929853.0
+2     2  0.000004  1.0  0.0       1.0  0.001940  0.000004    265581.0</code></pre>
 </div>
 <p>The results provide statistics for three zones: <code>1</code>
 represents infrastructure regions, <code>2</code> represents built-up
@@ -625,7 +628,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -646,9 +649,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/10-zonal-statistics.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/10-zonal-statistics.html",
-  "dateCreated": "2025-02-14",
-  "dateModified": "2024-06-25",
-  "datePublished": "2025-02-18"
+  "dateCreated": "2025-02-25",
+  "dateModified": "2025-02-25",
+  "datePublished": "2025-02-25"
 }
 
   </script><script>
