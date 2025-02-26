@@ -379,7 +379,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Raster Calculations in Python</h1>
-        <p>Last updated on 2024-06-25 |
+        <p>Last updated on 2025-02-26 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/09-raster-calculations.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -575,7 +575,7 @@ We can check the shapes of the two rasters in the following way:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>(1, 1131, 1207) (1, 1131, 1207)</code></pre>
+<pre class="output" tabindex="0"><code>(1, 4523, 4828) (1, 4523, 4828)</code></pre>
 </div>
 <p>The shapes of the two rasters match (and, not shown, the coordinates
 and the CRSs match too).</p>
@@ -652,7 +652,7 @@ indices?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -704,22 +704,20 @@ bands (and thus the derived custom index) have lower resolution:</p>
 <p>In order to combine data from the computed indices, we use the
 <code>reproject_match</code> method, which reprojects, clips and match
 the resolution of a raster using another raster as a template. We use
-the <code>index</code> raster as a template, and match <code>ndvi</code>
-and <code>ndwi</code> to its resolution and extent:</p>
+the <code>ndvi</code> raster as a template, and match <code>index</code>
+and <code>swir16_clip</code> to its resolution and extent:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>ndvi_match <span class="op">=</span> ndvi.rio.reproject_match(index)</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>ndwi_match <span class="op">=</span> ndwi.rio.reproject_match(index)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>index_match <span class="op">=</span> index.rio.reproject_match(ndvi)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>swir16_match <span class="op">=</span> swir16_clip.rio.reproject_match(ndvi)</span></code></pre>
 </div>
-<p>Finally, we also fetch the blue band data and match this and the NIR
-band data to the template:</p>
+<p>Finally, we also load the blue band data and clip it to the area of
+interest:</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>blue_clip <span class="op">=</span> get_band_and_clip(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/blue.tif'</span>, bbox)</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>blue_match <span class="op">=</span> blue_clip.rio.reproject_match(index)</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>nir_match <span class="op">=</span> nir_clip.rio.reproject_match(index)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>blue_clip <span class="op">=</span> get_band_and_clip(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/blue.tif'</span>, bbox)</span></code></pre>
 </div>
 <p>We can now go ahead and compute the binary classification mask for
 burned areas. Note that we need to convert the unit of the Sentinel-2
@@ -730,10 +728,10 @@ digital numbers to reflectance</a> (this is achieved by dividing by
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>burned <span class="op">=</span> (</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>    (ndvi_match <span class="op">&lt;=</span> <span class="fl">0.3</span>) <span class="op">&amp;</span></span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>    (ndwi_match <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>    ((index <span class="op">+</span> nir_match<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
-<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>    ((blue_match<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>    (ndvi <span class="op">&lt;=</span> <span class="fl">0.3</span>) <span class="op">&amp;</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>    (ndwi <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>    ((index_match <span class="op">+</span> nir_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>    ((blue_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
 <span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>    ((swir16_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&gt;=</span> <span class="fl">0.1</span>)</span>
 <span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>)</span></code></pre>
 </div>
@@ -844,9 +842,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/09-raster-calculations.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/09-raster-calculations.html",
-  "dateCreated": "2025-02-25",
-  "dateModified": "2024-06-25",
-  "datePublished": "2025-02-25"
+  "dateCreated": "2025-02-26",
+  "dateModified": "2025-02-26",
+  "datePublished": "2025-02-26"
 }
 
   </script><script>

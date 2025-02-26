@@ -1742,7 +1742,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-05-access-data"><p>Content from <a href="05-access-data.html">Access satellite imagery using Python</a></p>
 <hr>
-<p>Last updated on 2025-01-15 |
+<p>Last updated on 2025-02-26 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/05-access-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -2034,7 +2034,7 @@ way:</p>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>    intersects<span class="op">=</span>point,</span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>)</span></code></pre>
 </div>
-<p>Now we submit the query in order te find out how many scenes match
+<p>Now we submit the query in order to find out how many scenes match
 our search criteria with the parameters assigned above (please note that
 this output can be different as more data is added to the catalog to
 when this episode was created):</p>
@@ -2182,7 +2182,7 @@ coordinate system:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="bu">print</span>(item.properties[<span class="st">'proj:epsg'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="bu">print</span>(item.properties[<span class="st">'proj:code'</span>])</span></code></pre>
 </div>
 <div id="exercise-search-satellite-scenes-using-metadata-filters" class="callout challenge">
 <div class="callout-square">
@@ -3450,7 +3450,7 @@ any links that you are not going to use.
 </div>
 </div></section><section id="aio-07-vector-data-in-python"><p>Content from <a href="07-vector-data-in-python.html">Vector data in Python</a></p>
 <hr>
-<p>Last updated on 2024-06-25 |
+<p>Last updated on 2025-02-26 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/07-vector-data-in-python.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 50 minutes</p>
@@ -3568,7 +3568,7 @@ Note that geopandas is often abbreviated as gpd.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>gdf_greece <span class="op">=</span> gpd.read_file(<span class="st">'../data/gadm/ADM_ADM_3.gpkg'</span>)</span></code></pre>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>gdf_greece <span class="op">=</span> gpd.read_file(<span class="st">'data/gadm/ADM_ADM_3.gpkg'</span>)</span></code></pre>
 </div>
 <p>We can print out the <code>gdf_greece</code>variable:</p>
 <div class="codewrapper sourceCode" id="cb2">
@@ -3652,8 +3652,7 @@ the <code>to_file()</code> function save this file for future use.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Save the rhodes_boundary to gpkg</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>gdf_rhodes.to_file(<span class="st">'rhodes.gpkg'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>gdf_rhodes.to_file(<span class="st">'rhodes.gpkg'</span>)</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="get-the-vital-infrastructure-and-built-up-areas">Get the vital infrastructure and built-up areas<a class="anchor" aria-label="anchor" href="#get-the-vital-infrastructure-and-built-up-areas"></a>
 </h2>
@@ -3688,7 +3687,7 @@ secondary or tertiary roads.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>gdf_roads <span class="op">=</span> gpd.read_file(<span class="st">'../data/osm/osm_roads.gpkg'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>gdf_roads <span class="op">=</span> gpd.read_file(<span class="st">'data/osm/osm_roads.gpkg'</span>)</span></code></pre>
 </div>
 <p>We can explore it using the same commands as above:</p>
 <div class="codewrapper sourceCode" id="cb10">
@@ -3709,7 +3708,7 @@ above.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>gdf_roads <span class="op">=</span> gpd.read_file(<span class="st">'../data/osm/osm_roads.gpkg'</span>, mask<span class="op">=</span>gdf_rhodes)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>gdf_roads <span class="op">=</span> gpd.read_file(<span class="st">'data/osm/osm_roads.gpkg'</span>, mask<span class="op">=</span>gdf_rhodes)</span></code></pre>
 </div>
 <p>Now let us explore these roads using <code>.explore</code> (or
 <code>.plot</code>):</p>
@@ -3758,7 +3757,7 @@ function</a>.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>key_infra <span class="op">=</span> gdf_roads.loc[gdf_roads[<span class="st">'fclass'</span>].isin(key_infra_labels)]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>key_infra <span class="op">=</span> gdf_roads[gdf_roads[<span class="st">'fclass'</span>].isin(key_infra_labels)]</span></code></pre>
 </div>
 <p>We can plot the key infrastructure :</p>
 <div class="codewrapper sourceCode" id="cb17">
@@ -3952,20 +3951,20 @@ column.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Read data with a mask of Rhodes</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>gdf_landuse <span class="op">=</span> gpd.read_file(<span class="st">'./data_workshop/osm/osm_landuse.gpkg'</span>, mask<span class="op">=</span>gdf_rhodes)</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>gdf_landuse <span class="op">=</span> gpd.read_file(<span class="st">'./data/osm/osm_landuse.gpkg'</span>, mask<span class="op">=</span>gdf_rhodes)</span>
 <span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="co"># Find number of unique landuse types</span></span>
 <span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(gdf_landuse[<span class="st">'fclass'</span>].unique()))</span>
 <span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a></span>
 <span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a><span class="co"># Extract built-up regions</span></span>
 <span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>builtup_labels <span class="op">=</span> [<span class="st">'commercial'</span>, <span class="st">'industrial'</span>, <span class="st">'residential'</span>]</span>
-<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>builtup <span class="op">=</span> gdf_landuse.loc[gdf_landuse[<span class="st">'fclass'</span>].isin(builtup_labels)]</span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>builtup <span class="op">=</span> gdf_landuse[gdf_landuse[<span class="st">'fclass'</span>].isin(builtup_labels)]</span>
 <span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a></span>
 <span id="cb29-11"><a href="#cb29-11" tabindex="-1"></a><span class="co"># Create 10m buffer around the built-up regions</span></span>
 <span id="cb29-12"><a href="#cb29-12" tabindex="-1"></a>builtup_buffer <span class="op">=</span> buffer_crs(builtup, <span class="dv">10</span>)</span>
@@ -3980,7 +3979,7 @@ column.</li>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="fl">19</span></span>
-<span><span class="fl">1336</span></span></code></pre>
+<span><span class="fl">1349</span></span></code></pre>
 </div>
 <figure><img src="../fig/E07/rhodes_builtup_buffer.png" alt="rhodes_builtup_buffer" class="figure mx-auto d-block"></figure>
 </div>
@@ -4061,7 +4060,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-08-crop-raster-data"><p>Content from <a href="08-crop-raster-data.html">Crop raster data with rioxarray and geopandas</a></p>
 <hr>
-<p>Last updated on 2024-06-25 |
+<p>Last updated on 2025-02-26 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/08-crop-raster-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -4323,17 +4322,17 @@ accessor. For this we will use the <code>geometry</code> column of the
 <span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># Visualize the cropped image</span></span>
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>visual_clip.plot.imshow()</span></code></pre>
 </div>
-<figure><img src="../fig/E08/visual_clip.png" alt="Clip results" class="figure mx-auto d-block"></figure><div id="exercise-get-the-red-band-for-the-rhodes" class="callout challenge">
+<figure><img src="../fig/E08/visual_clip.png" alt="Clip results" class="figure mx-auto d-block"></figure><div id="exercise-clip-the-red-band-for-rhodes" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="exercise-get-the-red-band-for-the-rhodes" class="callout-inner">
-<h3 class="callout-title">Exercise: Get the red band for the Rhodes</h3>
+<div id="exercise-clip-the-red-band-for-rhodes" class="callout-inner">
+<h3 class="callout-title">Exercise: Clip the red band for Rhodes</h3>
 <div class="callout-content">
 <p>Now that you have seen how clip a raster using a polygon, we want you
-to do this for the red band of the sattelite image. Use the shape of
+to do this for the red band of the satellite image. Use the shape of
 Rhodes from GADM and clip the red band with it. Furthermore, make sure
-to transform the no data values to Not a Number values.</p>
+to transform the no data values to not-a-number (NaN) values.</p>
 </div>
 </div>
 </div>
@@ -4352,12 +4351,12 @@ to transform the no data values to Not a Number values.</p>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># Step 1 - Load the datasets - Vector data</span></span>
 <span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a></span>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>gdf_greece <span class="op">=</span> gpd.read_file(<span class="st">'./data_workshop/gadm/ADM_ADM_3.gpkg'</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>gdf_rhodes <span class="op">=</span> gdf_greece.loc[gdf_greece[<span class="st">'NAME_3'</span>]<span class="op">==</span><span class="st">'Rhodos'</span>]</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>gdf_greece <span class="op">=</span> gpd.read_file(<span class="st">'./data/gadm/ADM_ADM_3.gpkg'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>gdf_rhodes <span class="op">=</span> gdf_greece[gdf_greece[<span class="st">'NAME_3'</span>]<span class="op">==</span><span class="st">'Rhodos'</span>]</span>
 <span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a></span>
 <span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co"># Step 2 - Load the raster red band</span></span>
 <span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="im">import</span> rioxarray</span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>path_red <span class="op">=</span> <span class="st">'./data_workshop/sentinel2/red.tif'</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>path_red <span class="op">=</span> <span class="st">'./data/sentinel2/red.tif'</span></span>
 <span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>red <span class="op">=</span> rioxarray.open_rasterio(path_red, overview_level<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a></span>
 <span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co"># Step 3 - It will not work, since it is not projected yet</span></span>
@@ -4376,7 +4375,7 @@ to transform the no data values to Not a Number values.</p>
 <span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a></span>
 <span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a>red_clip_nan.plot()</span></code></pre>
 </div>
-<figure><img src="../fig/E08/solution_excercise.png" alt="rhodes_builtup_buffer" class="figure mx-auto d-block"></figure>
+<figure><img src="../fig/E08/solution_exercise.png" alt="rhodes_builtup_buffer" class="figure mx-auto d-block"></figure>
 </div>
 </div>
 </div>
@@ -4481,7 +4480,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-09-raster-calculations"><p>Content from <a href="09-raster-calculations.html">Raster Calculations in Python</a></p>
 <hr>
-<p>Last updated on 2024-06-25 |
+<p>Last updated on 2025-02-26 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/09-raster-calculations.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
@@ -4687,7 +4686,7 @@ We can check the shapes of the two rasters in the following way:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>(1, 1131, 1207) (1, 1131, 1207)</code></pre>
+<pre class="output" tabindex="0"><code>(1, 4523, 4828) (1, 4523, 4828)</code></pre>
 </div>
 <p>The shapes of the two rasters match (and, not shown, the coordinates
 and the CRSs match too).</p>
@@ -4768,7 +4767,7 @@ indices?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4820,22 +4819,20 @@ bands (and thus the derived custom index) have lower resolution:</p>
 <p>In order to combine data from the computed indices, we use the
 <code>reproject_match</code> method, which reprojects, clips and match
 the resolution of a raster using another raster as a template. We use
-the <code>index</code> raster as a template, and match <code>ndvi</code>
-and <code>ndwi</code> to its resolution and extent:</p>
+the <code>ndvi</code> raster as a template, and match <code>index</code>
+and <code>swir16_clip</code> to its resolution and extent:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>ndvi_match <span class="op">=</span> ndvi.rio.reproject_match(index)</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>ndwi_match <span class="op">=</span> ndwi.rio.reproject_match(index)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>index_match <span class="op">=</span> index.rio.reproject_match(ndvi)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>swir16_match <span class="op">=</span> swir16_clip.rio.reproject_match(ndvi)</span></code></pre>
 </div>
-<p>Finally, we also fetch the blue band data and match this and the NIR
-band data to the template:</p>
+<p>Finally, we also load the blue band data and clip it to the area of
+interest:</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>blue_clip <span class="op">=</span> get_band_and_clip(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/blue.tif'</span>, bbox)</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>blue_match <span class="op">=</span> blue_clip.rio.reproject_match(index)</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>nir_match <span class="op">=</span> nir_clip.rio.reproject_match(index)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>blue_clip <span class="op">=</span> get_band_and_clip(<span class="ss">f'</span><span class="sc">{</span>data_path<span class="sc">}</span><span class="ss">/blue.tif'</span>, bbox)</span></code></pre>
 </div>
 <p>We can now go ahead and compute the binary classification mask for
 burned areas. Note that we need to convert the unit of the Sentinel-2
@@ -4846,10 +4843,10 @@ digital numbers to reflectance</a> (this is achieved by dividing by
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>burned <span class="op">=</span> (</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>    (ndvi_match <span class="op">&lt;=</span> <span class="fl">0.3</span>) <span class="op">&amp;</span></span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>    (ndwi_match <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>    ((index <span class="op">+</span> nir_match<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
-<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>    ((blue_match<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>    (ndvi <span class="op">&lt;=</span> <span class="fl">0.3</span>) <span class="op">&amp;</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>    (ndwi <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>    ((index_match <span class="op">+</span> nir_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>    ((blue_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
 <span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>    ((swir16_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&gt;=</span> <span class="fl">0.1</span>)</span>
 <span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>)</span></code></pre>
 </div>
@@ -5128,7 +5125,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-11-parallel-raster-computations"><p>Content from <a href="11-parallel-raster-computations.html">Parallel raster computations using Dask</a></p>
 <hr>
-<p>Last updated on 2024-06-25 |
+<p>Last updated on 2025-02-26 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/11-parallel-raster-computations.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
@@ -5511,7 +5508,7 @@ output).</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="im">from</span> threading <span class="im">import</span> Lock</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>ndvi_dask.rio.to_raster(<span class="st">'ndvi.tif'</span>, driver<span class="op">=</span><span class="st">'COG'</span>, lock<span class="op">=</span>Lock())</span></code></pre>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>ndvi_dask.rio.to_raster(<span class="st">'ndvi.tif'</span>, tiled<span class="op">=</span><span class="va">True</span>, lock<span class="op">=</span>Lock())</span></code></pre>
 </div>
 <p>Note that <code>.to_raster()</code> is among the methods that trigger
 immediate calculations (one can change this behaviour by specifying
@@ -5874,9 +5871,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/aio.html",
-  "dateCreated": "2025-02-25",
-  "dateModified": "2025-02-25",
-  "datePublished": "2025-02-25"
+  "dateCreated": "2025-02-26",
+  "dateModified": "2025-02-26",
+  "datePublished": "2025-02-26"
 }
 
   </script><script>

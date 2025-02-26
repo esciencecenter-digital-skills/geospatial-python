@@ -380,7 +380,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Parallel raster computations using Dask</h1>
-        <p>Last updated on 2024-06-25 |
+        <p>Last updated on 2025-02-26 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/11-parallel-raster-computations.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -756,7 +756,7 @@ output).</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="im">from</span> threading <span class="im">import</span> Lock</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>ndvi_dask.rio.to_raster(<span class="st">'ndvi.tif'</span>, driver<span class="op">=</span><span class="st">'COG'</span>, lock<span class="op">=</span>Lock())</span></code></pre>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>ndvi_dask.rio.to_raster(<span class="st">'ndvi.tif'</span>, tiled<span class="op">=</span><span class="va">True</span>, lock<span class="op">=</span>Lock())</span></code></pre>
 </div>
 <p>Note that <code>.to_raster()</code> is among the methods that trigger
 immediate calculations (one can change this behaviour by specifying
@@ -843,9 +843,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/11-parallel-raster-computations.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/11-parallel-raster-computations.html",
-  "dateCreated": "2025-02-25",
-  "dateModified": "2024-06-25",
-  "datePublished": "2025-02-25"
+  "dateCreated": "2025-02-26",
+  "dateModified": "2025-02-26",
+  "datePublished": "2025-02-26"
 }
 
   </script><script>
