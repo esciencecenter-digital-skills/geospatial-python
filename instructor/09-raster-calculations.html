@@ -379,7 +379,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Raster Calculations in Python</h1>
-        <p>Last updated on 2025-02-26 |
+        <p>Last updated on 2025-05-20 |
 
         <a href="https://github.com/carpentries-incubator/geospatial-python/edit/main/episodes/09-raster-calculations.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -732,7 +732,7 @@ digital numbers to reflectance</a> (this is achieved by dividing by
 <span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>    (ndwi <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
 <span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>    ((index_match <span class="op">+</span> nir_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
 <span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>    ((blue_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&lt;=</span> <span class="fl">0.1</span>) <span class="op">&amp;</span></span>
-<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>    ((swir16_clip<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&gt;=</span> <span class="fl">0.1</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>    ((swir16_match<span class="op">/</span><span class="dv">10_000</span>) <span class="op">&gt;=</span> <span class="fl">0.1</span>)</span>
 <span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>)</span></code></pre>
 </div>
 <p>The classification mask has a single element along the “band” axis,
@@ -842,8 +842,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/geospatial-python/instructor/09-raster-calculations.html",
   "identifier": "https://carpentries-incubator.github.io/geospatial-python/instructor/09-raster-calculations.html",
-  "dateCreated": "2025-02-26",
-  "dateModified": "2025-02-26",
+  "dateCreated": "2025-05-20",
+  "dateModified": "2025-05-20",
   "datePublished": "2025-05-20"
 }
 
